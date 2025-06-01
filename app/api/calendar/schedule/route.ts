@@ -1,38 +1,66 @@
 export const runtime = "edge";
-import { NextResponse } from "next/server";
-import { SignJWT, importPKCS8, exportJWK } from "jose";
 
-// If `globalThis.atob` exists (Edge/browser), use it.
-// Otherwise (Node), define it via Buffer.
+import { NextResponse } from "next/server";
+import { importPKCS8 } from "jose";
+
+// Define atob for environments where it might not exist (though Edge should have it)
 const atob =
   globalThis.atob ??
   ((b64: string) => Buffer.from(b64, "base64").toString("utf8"));
 
-// helper to exchange service-account JWT for Google OAuth2 access token
+// Custom base64url encoding function to avoid btoa issues
+const base64UrlEncode = (data: Uint8Array | string): string => {
+  const buffer =
+    typeof data === "string" ? new TextEncoder().encode(data) : data;
+  const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
+  return base64.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
+};
+
+// Helper to exchange service-account JWT for Google OAuth2 access token
 async function getAccessToken(): Promise<string> {
-  // ── 1) Parse service-account JSON (raw or Base64-encoded)
+  // Parse the service account key (raw JSON or base64-encoded)
   const raw = process.env.GOOGLE_SERVICE_ACCOUNT_KEY!;
   const sa = JSON.parse(raw.startsWith("{") ? raw : atob(raw));
   const alg = "RS256";
   const now = Math.floor(Date.now() / 1000);
 
-  // ── 2) Import private key (PEM) → CryptoKey
-  const pem = sa.private_key.replace(/\\n/g, "\n");
+  // Import the private key from PEM format
+  const pem = sa.private_key; // Use as-is, assuming it has proper newlines
   const cryptoKey = await importPKCS8(pem, alg);
-  // ── 3) Export CryptoKey → JWK
-  const jwk = await exportJWK(cryptoKey);
-  // ── 4) Build and sign the JWT using the JWK
-  const jwt = await new SignJWT({
-    scope: "https://www.googleapis.com/auth/calendar",
-  })
-    .setProtectedHeader({ alg, typ: "JWT" })
-    .setIssuedAt(now)
-    .setExpirationTime(now + 3600)
-    .setIssuer(sa.client_email)
-    .setSubject(process.env.CALENDAR_ID!)
-    .setAudience("https://oauth2.googleapis.com/token")
-    .sign(jwk);
 
+  // JWT Header
+  const header = {
+    alg: "RS256",
+    typ: "JWT",
+  };
+
+  // JWT Payload
+  const payload = {
+    scope: "https://www.googleapis.com/auth/calendar",
+    iss: sa.client_email,
+    sub: process.env.CALENDAR_ID, // Email of the user to impersonate
+    aud: "https://oauth2.googleapis.com/token",
+    iat: now,
+    exp: now + 3600, // 1 hour expiration
+  };
+
+  // Encode header and payload to base64url
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
+  const signingInput = `${encodedHeader}.${encodedPayload}`;
+
+  // Sign using Web Crypto API
+  const signature = await crypto.subtle.sign(
+    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+    cryptoKey,
+    new TextEncoder().encode(signingInput)
+  );
+
+  // Convert signature to base64url
+  const encodedSignature = base64UrlEncode(new Uint8Array(signature));
+  const jwt = `${signingInput}.${encodedSignature}`;
+
+  // Exchange JWT for access token
   const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -41,10 +69,12 @@ async function getAccessToken(): Promise<string> {
       assertion: jwt,
     }),
   });
+
   if (!tokenRes.ok) {
     const err = await tokenRes.json();
     throw new Error(`OAuth error: ${err.error_description || err.error}`);
   }
+
   const { access_token } = await tokenRes.json();
   return access_token;
 }
@@ -87,20 +117,27 @@ export async function POST(req: Request) {
         body: JSON.stringify({
           summary,
           description: `${summary}\n\nBooked by: ${
-            attendees?.[0]?.displayName || ""
-          } <${attendees?.[0]?.email || ""}>`,
+            attendees?.[0]?.displayName || "Unknown"
+          } <${attendees?.[0]?.email || "no-email@example.com"}>`,
           start: { dateTime: startDate.toISOString() },
           end: { dateTime: endDate.toISOString() },
         }),
       }
     );
+
     if (!evRes.ok) {
       const err = await evRes.json();
+      console.error("Calendar API error:", err);
       return NextResponse.json({ error: err }, { status: evRes.status });
     }
+
     const event = await evRes.json();
     return NextResponse.json({ status: "scheduled", event });
   } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+    console.error("Scheduling error:", e);
+    return NextResponse.json(
+      { error: e.message, stack: e.stack },
+      { status: 500 }
+    );
   }
 }
