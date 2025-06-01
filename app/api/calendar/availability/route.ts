@@ -8,18 +8,17 @@ const atob =
   globalThis.atob ??
   ((b64: string) => Buffer.from(b64, "base64").toString("utf8"));
 
-// Base64url encoding function
-const btoaUrl = (str: string) => {
-  const buffer = new TextEncoder().encode(str);
-  let binary = "";
-  for (const byte of buffer) {
-    binary += String.fromCharCode(byte);
-  }
-  return globalThis
-    .btoa(binary)
-    .replace(/=/g, "")
-    .replace(/\+/g, "-")
-    .replace(/\//g, "_");
+// Custom base64url encoding function to avoid btoa issues
+const base64UrlEncode = (data: Uint8Array | string): string => {
+  // Convert input to Uint8Array if it's a string
+  const buffer =
+    typeof data === "string" ? new TextEncoder().encode(data) : data;
+
+  // Convert to base64 using a manual approach
+  const base64 = btoa(String.fromCharCode.apply(null, Array.from(buffer)));
+
+  // Convert to base64url format: remove padding, replace + with -, / with _
+  return base64.replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
 };
 
 async function getAccessToken(): Promise<string> {
@@ -50,8 +49,8 @@ async function getAccessToken(): Promise<string> {
   };
 
   // Encode header and payload to base64url
-  const encodedHeader = btoaUrl(JSON.stringify(header));
-  const encodedPayload = btoaUrl(JSON.stringify(payload));
+  const encodedHeader = base64UrlEncode(JSON.stringify(header));
+  const encodedPayload = base64UrlEncode(JSON.stringify(payload));
   const signingInput = `${encodedHeader}.${encodedPayload}`;
 
   // Sign using Web Crypto API
@@ -62,9 +61,7 @@ async function getAccessToken(): Promise<string> {
   );
 
   // Convert signature to base64url
-  const encodedSignature = btoaUrl(
-    String.fromCharCode(...new Uint8Array(signature))
-  );
+  const encodedSignature = base64UrlEncode(new Uint8Array(signature));
   const jwt = `${signingInput}.${encodedSignature}`;
 
   // Exchange JWT for access token
