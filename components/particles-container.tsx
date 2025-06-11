@@ -80,11 +80,10 @@ export function ParticlesContainer() {
             straight: false,
           },
           number: {
+            value: 80,
             density: {
               enable: true,
-              area: 800,
             },
-            value: 80,
           },
           opacity: {
             value: 0.5,
