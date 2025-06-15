@@ -6,18 +6,68 @@ import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// SEO metadata for Next.js
+// Comprehensive SEO metadata for Next.js
 export const metadata: Metadata = {
-  title: "Zoftware Development - Anything is possible with Zoftware",
-  description: "Zoftware Development is a software development company that provides software development services to businesses.",
-  keywords: "software development, software development services, software development company, software development agency, software development firm, software development services company, software development services agency, software development services firm",
-  generator: "v0.dev",
+  // Primary SEO tags
+  title: "Zoftware Development - Custom Software Solutions & Web Development",
+  description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
+  keywords: "custom software development, web development, mobile app development, enterprise software, business automation, React development, Next.js development", // Focused, relevant keywords
+
+  // Technical metadata
+  generator: "Next.js",
+  applicationName: "Zoftware Development",
+  referrer: "origin-when-cross-origin", // Privacy-friendly referrer policy
+
+  // SEO directives for search engines
+  robots: {
+    index: true,        // Allow search engines to index this page
+    follow: true,       // Allow search engines to follow links
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,    // Allow full video previews
+      'max-image-preview': 'large', // Allow large image previews
+      'max-snippet': -1,  // Allow unlimited snippet length
+    },
+  },
+
   // Icons for browser and iOS (apple touch)
   icons: {
     icon: '/images/just-logo.png',       // standard favicon
     shortcut: '/images/just-logo.png',  // shortcut icon
     apple: '/images/just-logo.png',     // apple touch icon
   },
+
+  // Enhanced OpenGraph metadata for social media sharing
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',                     // Language and region
+    title: "Zoftware Development - Custom Software Solutions & Web Development",
+    description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
+    siteName: "Zoftware Development",    // Site name for social platforms
+    images: [
+      {
+        url: '/images/just-logo.png',    // image URL for social sharing
+        width: 1200,                     // recommended width for og:image
+        height: 630,                     // recommended height for og:image
+        alt: 'Zoftware Development Logo - Custom Software Solutions', // descriptive alt text
+        type: 'image/png',               // image MIME type
+      }
+    ],
+  },
+
+  // Twitter Card metadata for better Twitter sharing
+  twitter: {
+    card: 'summary_large_image',         // Large image card for better visibility
+    title: "Zoftware Development - Custom Software Solutions",
+    description: "Transform your business with custom software solutions. Expert web development, mobile apps, and enterprise software.",
+    images: ['/images/just-logo.png'],   // Twitter card image
+    creator: '@ZoftwareD',             // Replace with your actual Twitter handle if you have one
+  },
+
+  // Additional metadata for better SEO
+  category: 'technology',                // Content category
+  classification: 'Business',           // Content classification
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
