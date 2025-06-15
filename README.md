@@ -135,4 +135,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-> Built with ❤️ by Zoftware Development. Anything is possible with Zoftware.
+> Built with ❤️ by Zoftware Development. Anything is possible with Zoftware..
