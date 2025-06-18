@@ -66,13 +66,13 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Twitter Card metadata for better Twitter sharing
+  // X (formerly Twitter) Card metadata for better X sharing
   twitter: {
     card: 'summary_large_image',         // Large image card for better visibility
     title: "Zoftware Development - Custom Software Solutions",
     description: "Transform your business with custom software solutions. Expert web development, mobile apps, and enterprise software.",
-    images: ['/images/just-logo.png'],   // Twitter card image
-    creator: '@ZoftwareD',             // Replace with your actual Twitter handle if you have one
+    images: ['/images/just-logo.png'],   // X card image
+    creator: '@ZoftwareD',             // X handle
   },
 
   // Additional metadata for better SEO

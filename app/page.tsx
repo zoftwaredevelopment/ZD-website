@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
-import { Brain, Database, Globe} from "lucide-react";
+import { Brain, Database, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { ParticlesContainer } from "@/components/particles-container";
 import { TypingEffect } from "@/components/typing-effect";
@@ -16,45 +16,7 @@ import { useInView } from "react-intersection-observer";
 import { CyberCalendar } from "@/components/ui/cyber-calendar";
 import { audiowide } from "@/app/fonts";
 
-function getOrdinalSuffix(i: number): string {
-  const j = i % 10;
-  const k = i % 100;
-  if (j === 1 && k !== 11) return "st";
-  if (j === 2 && k !== 12) return "nd";
-  if (j === 3 && k !== 13) return "rd";
-  return "th";
-}
-
-function formatDate(date: Date): string {
-  const day = date.getDate();
-  const ordinal = getOrdinalSuffix(day);
-  const weekday = date.toLocaleDateString("en-US", { weekday: "long" });
-  const month = date.toLocaleDateString("en-US", { month: "long" });
-  const year = date.getFullYear();
-  return `${weekday} ${day}${ordinal} ${month} ${year}`;
-}
-
 export default function Home() {
-  // Calendar date selection state
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
-  // Time slot selection state
-  const [selectedTime, setSelectedTime] = useState<string | undefined>(
-    undefined
-  );
-  // Contact info state
-  const [contactName, setContactName] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactPhone, setContactPhone] = useState("");
-  // Example time slots every 30 minutes from 9am to 5pm
-  const timeSlots = Array.from({ length: 17 }, (_, i) => {
-    const totalMins = 9 * 60 + i * 30;
-    const h = Math.floor(totalMins / 60);
-    const m = totalMins % 60;
-    const ampm = h < 12 ? "AM" : "PM";
-    const displayHour = h % 12 === 0 ? 12 : h % 12;
-    const minuteStr = m.toString().padStart(2, "0");
-    return `${displayHour}:${minuteStr} ${ampm}`;
-  });
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const heroRef = useRef<HTMLDivElement>(null);
