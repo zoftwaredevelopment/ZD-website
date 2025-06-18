@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zoftwaredevelopment.agency/sitemap.xml
+
+# Block common bot paths that might cause issues
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.well-known/
+
+# Allow Google to crawl images
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Additional crawl instructions
+Crawl-delay: 1 

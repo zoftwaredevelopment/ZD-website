@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
-import { Brain, Code, Cpu, Database, Globe, Smartphone } from "lucide-react";
+import { Brain, Database, Globe} from "lucide-react";
 import { motion } from "framer-motion";
 import { ParticlesContainer } from "@/components/particles-container";
 import { TypingEffect } from "@/components/typing-effect";

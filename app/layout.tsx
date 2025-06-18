@@ -8,6 +8,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Comprehensive SEO metadata for Next.js
 export const metadata: Metadata = {
+  // Canonical URL to prevent duplicate content issues
+  metadataBase: new URL('https://zoftwaredevelopment.agency'), // Replace with your actual domain
+  alternates: {
+    canonical: '/', // Canonical URL for the homepage
+  },
+
   // Primary SEO tags
   title: "Zoftware Development - Custom Software Solutions & Web Development",
   description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
@@ -22,9 +28,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,        // Allow search engines to index this page
     follow: true,       // Allow search engines to follow links
+    noarchive: false,   // Allow search engines to archive
+    nocache: false,     // Allow search engines to cache
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false, // Allow Google to index images
       'max-video-preview': -1,    // Allow full video previews
       'max-image-preview': 'large', // Allow large image previews
       'max-snippet': -1,  // Allow unlimited snippet length
@@ -42,12 +51,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',                     // Language and region
+    url: 'https://zoftwaredevelopment.agency',         // Canonical URL for social sharing
     title: "Zoftware Development - Custom Software Solutions & Web Development",
     description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
     siteName: "Zoftware Development",    // Site name for social platforms
     images: [
       {
-        url: '/images/just-logo.png',    // image URL for social sharing
+        url: 'https://zoftwaredevelopment.agency/images/just-logo.png', // Absolute URL for social sharing
         width: 1200,                     // recommended width for og:image
         height: 630,                     // recommended height for og:image
         alt: 'Zoftware Development Logo - Custom Software Solutions', // descriptive alt text
