@@ -215,7 +215,7 @@ export default function Home() {
                 color="green"
               />
             </motion.div> */}
-            <motion.div variants={itemVariants} className="relative">
+            {/* <motion.div variants={itemVariants} className="relative">
               <CyberCard
                 icon={<Brain className="h-8 w-8" />}
                 title="AI Solutions"
@@ -225,8 +225,8 @@ export default function Home() {
               <span className="absolute top-4 right-4 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] text-black text-xs font-semibold uppercase px-2 py-0.5 rounded">
                 Coming Soon
               </span>
-            </motion.div>
-            <motion.div variants={itemVariants} className="relative">
+            </motion.div> */}
+            {/* <motion.div variants={itemVariants} className="relative">
               <CyberCard
                 icon={<Database className="h-8 w-8" />}
                 title="Database Design"
@@ -236,7 +236,7 @@ export default function Home() {
               <span className="absolute top-4 right-4 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] text-black text-xs font-semibold uppercase px-2 py-0.5 rounded">
                 Coming Soon
               </span>
-            </motion.div>
+            </motion.div> */}
             {/* <motion.div variants={itemVariants}>
               <CyberCard
                 icon={<Code className="h-8 w-8" />}
@@ -255,6 +255,95 @@ export default function Home() {
               />
             </motion.div> */}
           </motion.div>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section id="about" className="relative overflow-hidden py-16 md:py-24">
+        <div className="absolute inset-0 bg-[#0a0a12]"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#3ecef7]/5 via-transparent to-[#7deb7d]/5"></div>
+
+        <div className="container relative z-10 px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center justify-center space-y-4 text-center"
+          >
+            <div className="space-y-2">
+              <h2
+                className={`${audiowide.className} text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white`}
+              >
+                About{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3ecef7] to-[#7deb7d]">
+                  Zoftware
+                </span>
+              </h2>
+            </div>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 py-12 md:grid-cols-2 items-center">
+            {/* Content Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-white">
+                  Transforming Ideas Into Digital Reality
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  At Zoftware Development, we're passionate software engineers who believe that
+                  <span className="text-[#3ecef7] font-semibold"> anything is possible with the rightCode</span>.
+                  Specializing in modern web development, we craft custom software solutions that drive business growth.
+                </p>
+                <p className="text-gray-300 leading-relaxed">
+                  From responsive websites to complex web applications, we use cutting-edge technologies like
+                  <span className="text-[#7deb7d] font-medium"> React, Next.js, and TypeScript</span> to build
+                  scalable, performant solutions that exceed expectations.
+                </p>
+              </div>
+
+
+            </motion.div>
+
+            {/* Visual Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative rounded-lg overflow-hidden">
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] opacity-50 blur-sm"></div>
+                <div className="relative bg-[#0f0f1a] p-8 rounded-lg border border-[#1a1a2e]">
+                  {/* Code snippet visual */}
+                  <div className="font-mono text-sm space-y-2">
+                    <div className="text-[#7deb7d]">// Our Philosophy</div>
+                    <div className="text-gray-300">
+                      <span className="text-[#3ecef7]">const</span> zoftware = {'{'}
+                    </div>
+                    <div className="pl-4 text-gray-300">
+                      <span className="text-[#7deb7d]">mission</span>: <span className="text-orange-400">"Transform businesses through code"</span>,
+                    </div>
+                    <div className="pl-4 text-gray-300">
+                      <span className="text-[#7deb7d]">approach</span>: <span className="text-orange-400">"Client-first development"</span>,
+                    </div>
+                    <div className="pl-4 text-gray-300">
+                      <span className="text-[#7deb7d]">promise</span>: <span className="text-orange-400">"Anything is possible"</span>
+                    </div>
+                    <div className="text-gray-300">{'}'}</div>
+                    <div className="pt-2 text-[#7deb7d]">// Let's build something amazing together!</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -326,8 +415,8 @@ export default function Home() {
             </motion.div>
             <motion.div variants={itemVariants}>
               <ProjectCard
-                title="Eco-Friendly Cleaning Website"
-                description="Web app for an eco-friendly residential cleaning website offering move-in/move-out and post-construction cleans with a 100% satisfaction guarantee."
+                title="With Love Cleaning"
+                description="Professional cleaning services website for a single mom entrepreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
                 tags={[
                   "Next.js 15 (App Router)",
                   "React 18",
@@ -336,8 +425,8 @@ export default function Home() {
                   "Formspree",
                   "Vercel",
                 ]}
-                imageUrl="/images/just-logo.png"
-                ctaUrl="https://cleaningservice-phi.vercel.app/"
+                imageUrl="/images/hero-logo.jpg"
+                ctaUrl="https://www.withlovecleaning.ca/"
               />
             </motion.div>
           </motion.div>
@@ -375,8 +464,8 @@ export default function Home() {
             </div>
           </motion.div>
 
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 py-12 md:grid-cols-2">
-            <motion.div
+          <div className="mx-auto flex max-w-4xl justify-center py-12">
+            {/* <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -384,11 +473,11 @@ export default function Home() {
               className="rounded-lg bg-[#0f0f1a] p-8 border border-[#1a1a2e] shadow-[0_0_15px_rgba(62,206,247,0.15)]"
             >
               <CyberCalendar />
-            </motion.div>
+            </motion.div> */}
 
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
               className="flex flex-col justify-center space-y-8"
@@ -466,7 +555,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex items-start space-x-4">
+              {/* <div className="flex items-start space-x-4">
                 <div className="rounded-full bg-[#7deb7d]/10 p-3 border border-[#7deb7d]/30 shadow-[0_0_10px_rgba(125,235,125,0.3)]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -490,7 +579,7 @@ export default function Home() {
                   </h3>
                   <p className="text-gray-300">Monday - Sunday: 9am - 6pm</p>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
