@@ -409,6 +409,37 @@ export default function Home() {
             animate={projectsInView ? "visible" : "hidden"}
             className="mx-auto grid max-w-6xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3"
           >
+            {/* Mama-Ella-Eats Project */}
+            <motion.div variants={itemVariants}>
+              <ProjectCard
+                // Project Title
+                title="Mama-Ella-Eats"
+                // Project Description
+                description="A headless Shopify e-commerce store built with Next.js for a local bakery, offering a variety of freshly baked goods. The site allows customers to browse products and make purchases online."
+                // 5 priority technologies used in the project
+                tags={["Next.js", "React", "TypeScript", "Shopify", "Vercel"]}
+                // Placeholder image for the project
+                imageUrl="/images/mama-logo.png"
+                // URL to the live project
+                ctaUrl="https://mama-ella-eats.vercel.app/"
+              />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <ProjectCard
+                title="With Love Cleaning"
+                description="Professional cleaning services website for a single mom entrepreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
+                tags={[
+                  "Next.js 15 (App Router)",
+                  "React 18",
+                  "TypeScript",
+                  "Node.js v18+",
+                  "Formspree",
+                  "Vercel",
+                ]}
+                imageUrl="/images/hero-logo.jpg"
+                ctaUrl="https://www.withlovecleaning.ca/"
+              />
+            </motion.div>
             {/* MASA Reset System - First fully paid & retained project */}
             <motion.div variants={itemVariants}>
               <ProjectCard
@@ -434,22 +465,6 @@ export default function Home() {
                 ]}
                 imageUrl="/images/masa-logo.png"
                 ctaUrl="https://www.masa.fitness/"
-              />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <ProjectCard
-                title="With Love Cleaning"
-                description="Professional cleaning services website for a single mom entrepreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
-                tags={[
-                  "Next.js 15 (App Router)",
-                  "React 18",
-                  "TypeScript",
-                  "Node.js v18+",
-                  "Formspree",
-                  "Vercel",
-                ]}
-                imageUrl="/images/hero-logo.jpg"
-                ctaUrl="https://www.withlovecleaning.ca/"
               />
             </motion.div>
           </motion.div>
