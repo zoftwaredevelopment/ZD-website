@@ -182,7 +182,7 @@ export default function Home() {
                             disabled={!file || uploading}
                         >
                             {uploading ? <LoaderCircle className="animate-spin mr-2" /> : null}
-                            {uploading ? 'Analyzing...' : 'Analyze Image'}
+                            {uploading ? 'Extracting...' : 'Extract Text'}
                         </button>
                     </div>
                 )}
