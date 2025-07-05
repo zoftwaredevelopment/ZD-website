@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Camera, Image, X, LoaderCircle, CheckCircle, AlertCircle, Smartphone } from "lucide-react";
+import { Camera, Image, X, LoaderCircle, CheckCircle, AlertCircle, Smartphone, Leaf } from "lucide-react";
 import { useIsMobile } from "../../../hooks/use-mobile";
 
 export default function Home() {
@@ -129,8 +129,11 @@ export default function Home() {
         <main className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
             <div className="w-full max-w-2xl">
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-800">Live Field Data Capture</h1>
-                    <p className="text-gray-500 mt-2">Use your device to take a photo of handwritten notes and documents for instant processing.</p>
+                    <div className="flex justify-center items-center mb-4">
+                        <Leaf className="w-10 h-10 text-green-600 mr-3" />
+                        <h1 className="text-4xl font-bold text-gray-800 tracking-tight">Ecotrust Ledger</h1>
+                    </div>
+                    <p className="text-gray-500 mt-2">Use your device to capture handwritten field notes for instant processing and logging.</p>
                 </div>
 
                 {/* File Drop Zone */}
