@@ -1,4 +1,8 @@
+packages:
+  - "apps/*"
+  - "."
+
 onlyBuiltDependencies:
-  - '@tsparticles/engine'
+  - "@tsparticles/engine"
   - esbuild
   - sharp

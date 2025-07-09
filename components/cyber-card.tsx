@@ -7,9 +7,16 @@ interface CyberCardProps {
   title: string
   description: string
   color?: "cyan" | "green" | "purple"
+  children?: ReactNode
 }
 
-export function CyberCard({ icon, title, description, color = "cyan" }: CyberCardProps) {
+export function CyberCard({
+  icon,
+  title,
+  description,
+  color = "cyan",
+  children,
+}: CyberCardProps) {
   const colorStyles = {
     cyan: {
       iconBg: "bg-[#3ecef7]/10",
@@ -52,6 +59,7 @@ export function CyberCard({ icon, title, description, color = "cyan" }: CyberCar
 
         <h3 className="mb-2 text-xl font-bold text-white">{title}</h3>
         <p className="text-gray-400">{description}</p>
+        {children}
 
         <div className="absolute bottom-0 left-0 h-0.5 w-full overflow-hidden">
           <div className="h-full w-0 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] transition-all duration-500 group-hover:w-full"></div>
