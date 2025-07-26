@@ -159,11 +159,6 @@ export default function Home() {
                   Contact Us
                 </NeonButton>
               </Link>
-              <Link href="#pricing">
-                <NeonButton color="purple" variant="outline">
-                  Pricing
-                </NeonButton>
-              </Link>
             </motion.div>
           </div>
         </div>
@@ -485,122 +480,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section
-        ref={pricingRef}
-        id="pricing"
-        className="relative overflow-hidden py-16 md:py-24"
-      >
-        <div className="absolute inset-0 bg-[#0a0a12]"></div>
-        <CyberGrid />
-
-        <div className="container relative z-10 px-4 md:px-6">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={pricingInView ? "visible" : "hidden"}
-            className="flex flex-col items-center justify-center space-y-4 text-center"
-          >
-            <motion.div variants={itemVariants} className="space-y-2">
-              <h2
-                className={`${audiowide.className} text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white`}
-              >
-                Our{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8e3ef7] to-[#f73e97]">
-                  Pricing
-                </span>
-              </h2>
-              <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">
-                Choose the plan that fits your vision.
-              </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate={pricingInView ? "visible" : "hidden"}
-            className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3"
-          >
-            <motion.div variants={itemVariants}>
-              <CyberCard
-                icon={<Globe className="h-8 w-8" />}
-                title="Foundation"
-                description="Essential web presence and lead capture."
-                color="cyan"
-              >
-                <div className="mt-4 text-left">
-                  <p className="text-4xl font-bold text-white">$4.5k - $7k</p>
-                  <ul className="mt-4 space-y-2 text-gray-400">
-                    <li className="flex items-center">✓ 2 Landing Pages</li>
-                    <li className="flex items-center">✓ Booking/Payments</li>
-                    <li className="flex items-center">✓ Welcome Email Sequence</li>
-                    <li className="flex items-center">✓ Basic Analytics</li>
-                  </ul>
-                  <div className="mt-6">
-                    <Link href="#contact">
-                      <NeonButton color="cyan" variant="outline" className="w-full">
-                        Inquire Now
-                      </NeonButton>
-                    </Link>
-                  </div>
-                </div>
-              </CyberCard>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <CyberCard
-                icon={<Brain className="h-8 w-8" />}
-                title="Automation"
-                description="Full automation and client management."
-                color="green"
-              >
-                <div className="mt-4 text-left">
-                  <p className="text-4xl font-bold text-white">$9k - $14k</p>
-                  <ul className="mt-4 space-y-2 text-gray-400">
-                    <li className="flex items-center">✓ Everything in Foundation</li>
-                    <li className="flex items-center">✓ Client Management Portal</li>
-                    <li className="flex items-center">✓ Advanced Email Sequences</li>
-                    <li className="flex items-center">✓ Custom API Integrations</li>
-                  </ul>
-                  <div className="mt-6">
-                    <Link href="#contact">
-                      <NeonButton color="green" className="w-full">
-                        Inquire Now
-                      </NeonButton>
-                    </Link>
-                  </div>
-                </div>
-              </CyberCard>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <CyberCard
-                icon={<Database className="h-8 w-8" />}
-                title="Scale"
-                description="Marketing infrastructure and advanced lead gen."
-                color="purple"
-              >
-                <div className="mt-4 text-left">
-                  <p className="text-4xl font-bold text-white">$15k+</p>
-                  <ul className="mt-4 space-y-2 text-gray-400">
-                    <li className="flex items-center">✓ Everything in Automation</li>
-                    <li className="flex items-center">✓ Advanced Analytics Setup</li>
-                    <li className="flex items-center">✓ Ad Campaign Infrastructure</li>
-                    <li className="flex items-center">✓ Advanced Lead Magnets</li>
-                  </ul>
-                  <div className="mt-6">
-                    <Link href="#contact">
-                      <NeonButton color="purple" variant="outline" className="w-full">
-                        Inquire Now
-                      </NeonButton>
-                    </Link>
-                  </div>
-                </div>
-              </CyberCard>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Contact Section */}
       <section id="contact" className="relative overflow-hidden py-16 md:py-24">
         <div className="absolute inset-0 bg-[#0a0a12]"></div>
@@ -767,10 +646,6 @@ export default function Home() {
               © {new Date().getFullYear()} Zoftware Development. All rights
               reserved.
             </p>
-
-            <Link href="/terms" className="text-sm text-gray-400 hover:text-white transition-colors">
-              Terms of Service
-            </Link>
 
             <div className="flex gap-4">
               {/* X */}
