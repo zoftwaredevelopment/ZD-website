@@ -4,6 +4,10 @@ import { useState } from "react";
 import { Camera, Image, X, LoaderCircle, CheckCircle, AlertCircle, Smartphone, Leaf } from "lucide-react";
 import { useIsMobile } from "../../../hooks/use-mobile";
 
+// Import Firebase modules
+import { db } from "../lib/firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+
 export default function Home() {
     const isMobile = useIsMobile();
 
@@ -113,6 +117,21 @@ export default function Home() {
             // Set the extracted text from the AI
             console.log("Upload successful, setting extracted text.");
             setExtractedText(data.text);
+
+            // Save the extracted text to Firestore
+            try {
+                // Create a reference to the 'extractions' collection
+                const extractionsRef = collection(db, "extractions");
+                // Add a new document with the text and timestamp
+                await addDoc(extractionsRef, {
+                    text: data.text,
+                    createdAt: Timestamp.now()
+                });
+                console.log("Extracted text saved to Firestore.");
+            } catch (saveError) {
+                console.error("Error saving to Firestore:", saveError);
+                setError("Text extracted but failed to save. Please try again.");
+            }
 
         } catch (err: any) {
             // Set any other errors (e.g., network issues)
