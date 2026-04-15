@@ -414,7 +414,8 @@ export default function Home() {
             animate={projectsInView ? "visible" : "hidden"}
             className="mx-auto grid max-w-6xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3"
           >
-            {/* Mama-Ella-Eats Project */}
+            {/* Mama-Ella-Eats Project — hidden: demo site not worth the $49 CAD hosting cost */}
+            {/*
             <motion.div variants={itemVariants}>
               <ProjectCard
                 // Project Title
@@ -429,6 +430,7 @@ export default function Home() {
                 ctaUrl="https://mama-ella-eats.vercel.app/"
               />
             </motion.div>
+            */}
             <motion.div variants={itemVariants}>
               <ProjectCard
                 title="With Love Cleaning"
