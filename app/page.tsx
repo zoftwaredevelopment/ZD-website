@@ -540,7 +540,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-xl font-bold text-white">WhatsApp</h3>
-                  <p className="text-gray-300">+1 (613) 882-1225</p>
+                  <p className="text-gray-300">+234 706 890 3471</p>
                 </div>
               </div>
 
