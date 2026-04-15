@@ -432,7 +432,7 @@ export default function Home() {
             <motion.div variants={itemVariants}>
               <ProjectCard
                 title="With Love Cleaning"
-                description="Professional cleaning services website for a single mom entrepreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
+                description="Professional cleaning services website for a mompreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
                 tags={[
                   "Next.js 15 (App Router)",
                   "React 18",
