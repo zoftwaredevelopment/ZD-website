@@ -1,5 +1,5 @@
 packages:
-  - "apps/*"
+  # - "apps/*"  # ecotrust-ledger is inactive; commented out so root website is the sole project
   - "."
 
 onlyBuiltDependencies:
