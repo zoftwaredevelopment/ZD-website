@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectCard } from "@/components/project-card";
-import { Brain, Database, Globe } from "lucide-react";
+import { ShoppingBag, Rocket, Wrench } from "lucide-react";
 import { motion } from "framer-motion";
 import { ParticlesContainer } from "@/components/particles-container";
 import { TypingEffect } from "@/components/typing-effect";
@@ -15,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 
 import { CyberCalendar } from "@/components/ui/cyber-calendar";
 import { audiowide } from "@/app/fonts";
+import { ContactForm } from "@/components/contact-form";
 
 export default function Home() {
 
@@ -128,21 +129,20 @@ export default function Home() {
                 className={`${audiowide.className} text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl`}
               >
                 <TypingEffect
-                  text="Anything is possible with Zoftware"
-                  speed={100}
+                  text="Websites that win you customers"
+                  speed={80}
                 />
               </h1>
-              {/*
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1 }}
-                className="mx-auto max-w-[700px] text-gray-300 md:text-xl"
+                transition={{ delay: 1.2, duration: 1 }}
+                className="mx-auto max-w-[720px] text-gray-300 md:text-xl"
               >
-                We build cutting-edge software solutions that transform
-                businesses and drive growth.
+                Custom websites and online stores for Ottawa service businesses
+                and founders — launched in 2–4 weeks, from{" "}
+                <span className="text-[#7deb7d] font-semibold">$1,800 CAD</span>.
               </motion.p>
-              */}
             </div>
 
             <motion.div
@@ -151,12 +151,12 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.5 }}
               className="flex flex-col space-y-3 sm:flex-row sm:space-x-4 sm:space-y-0"
             >
-              <Link href="#about">
-                <NeonButton color="cyan">About us</NeonButton>
-              </Link>
               <Link href="#contact">
+                <NeonButton color="cyan">Book a free 20-min call</NeonButton>
+              </Link>
+              <Link href="#pricing">
                 <NeonButton color="green" variant="outline">
-                  Contact Us
+                  See pricing
                 </NeonButton>
               </Link>
             </motion.div>
@@ -186,15 +186,14 @@ export default function Home() {
               <h2
                 className={`${audiowide.className} text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white`}
               >
-                Our{" "}
+                What we{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3ecef7] to-[#7deb7d]">
-                  Services
+                  build
                 </span>
               </h2>
-
-              {/* <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">
-                We offer a comprehensive range of software development services
-              </p> */}
+              <p className="mx-auto max-w-[700px] text-gray-400 md:text-lg pt-2">
+                Modern, fast websites that work as hard as you do. Built on Next.js + React.
+              </p>
             </motion.div>
           </motion.div>
 
@@ -206,59 +205,28 @@ export default function Home() {
           >
             <motion.div variants={itemVariants}>
               <CyberCard
-                icon={<Globe className="h-8 w-8" />}
-                title="Web Development"
-                description="Custom web applications and responsive websites built with modern frameworks."
+                icon={<Rocket className="h-8 w-8" />}
+                title="Service Business Sites"
+                description="Booking, contact forms, Google Maps, testimonials. The site your customers actually use to hire you."
                 color="cyan"
               />
             </motion.div>
-            {/* <motion.div variants={itemVariants}>
+            <motion.div variants={itemVariants}>
               <CyberCard
-                icon={<Smartphone className="h-8 w-8" />}
-                title="Mobile Development"
-                description="Native and cross-platform mobile applications for iOS and Android."
+                icon={<ShoppingBag className="h-8 w-8" />}
+                title="Online Stores"
+                description="Shopify or headless commerce with Stripe. Sell products or digital goods without the monthly bloat."
                 color="green"
               />
-            </motion.div> */}
-            {/* <motion.div variants={itemVariants} className="relative">
+            </motion.div>
+            <motion.div variants={itemVariants}>
               <CyberCard
-                icon={<Brain className="h-8 w-8" />}
-                title="AI Solutions"
-                description="Intelligent applications powered by machine learning and artificial intelligence."
+                icon={<Wrench className="h-8 w-8" />}
+                title="Care & Updates"
+                description="Hosting, security patches, and small content changes on demand — $150/mo so you never touch the code."
                 color="cyan"
               />
-              <span className="absolute top-4 right-4 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] text-black text-xs font-semibold uppercase px-2 py-0.5 rounded">
-                Coming Soon
-              </span>
-            </motion.div> */}
-            {/* <motion.div variants={itemVariants} className="relative">
-              <CyberCard
-                icon={<Database className="h-8 w-8" />}
-                title="Database Design"
-                description="Scalable and efficient database architectures for your applications."
-                color="green"
-              />
-              <span className="absolute top-4 right-4 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] text-black text-xs font-semibold uppercase px-2 py-0.5 rounded">
-                Coming Soon
-              </span>
-            </motion.div> */}
-            {/* <motion.div variants={itemVariants}>
-              <CyberCard
-                icon={<Code className="h-8 w-8" />}
-                title="Custom Software"
-                description="Bespoke software solutions tailored to your specific business needs."
-                color="cyan"
-              />
-            </motion.div> */}
-
-            {/* <motion.div variants={itemVariants}>
-              <CyberCard
-                icon={<Cpu className="h-8 w-8" />}
-                title="IoT Development"
-                description="Connected device solutions and Internet of Things applications."
-                color="green"
-              />
-            </motion.div> */}
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -414,27 +382,12 @@ export default function Home() {
             animate={projectsInView ? "visible" : "hidden"}
             className="mx-auto grid max-w-6xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3"
           >
-            {/* Mama-Ella-Eats Project — hidden: demo site not worth the $49 CAD hosting cost */}
-            {/*
-            <motion.div variants={itemVariants}>
-              <ProjectCard
-                // Project Title
-                title="Mama-Ella-Eats"
-                // Project Description
-                description="A headless Shopify e-commerce store built with Next.js for a local bakery, offering a variety of freshly baked goods. The site allows customers to browse products and make purchases online."
-                // 5 priority technologies used in the project
-                tags={["Next.js", "React", "TypeScript", "Shopify", "Vercel"]}
-                // Placeholder image for the project
-                imageUrl="/images/mama-logo.png"
-                // URL to the live project
-                ctaUrl="https://mama-ella-eats.vercel.app/"
-              />
-            </motion.div>
-            */}
+            {/* Mama-Ella-Eats project card removed — demo site not hosted. Restore from git history if needed. */}
             <motion.div variants={itemVariants}>
               <ProjectCard
                 title="With Love Cleaning"
-                description="Professional cleaning services website for a mompreneur in Ottawa. Features residential, move-in/move-out, and post-construction cleaning."
+                description="Professional cleaning services website for a mompreneur in Ottawa. Residential, move-in/move-out, and post-construction cleaning, with an integrated quote form."
+                outcome="Launched a polished, mobile-first presence so the owner could compete with established Ottawa cleaners."
                 tags={[
                   "Next.js 15 (App Router)",
                   "React 18",
@@ -452,6 +405,7 @@ export default function Home() {
               <ProjectCard
                 title="MASA Reset System"
                 description="Web app for a specialized fitness platform for Arabs integrating tailored workout plans, customized diets, and community accountability via private WhatsApp groups and 1-on-1 support."
+                outcome="Our first fully-paid retained client — platform now powers a paying subscriber base."
                 tags={[
                   "HTML5/CSS3",
 
@@ -476,9 +430,153 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          { /* <motion.div variants={itemVariants} className="flex justify-center">
-            <NeonButton color="cyan">View All Projects</NeonButton>
-          </motion.div> */ }
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section
+        id="pricing"
+        ref={pricingRef}
+        className="relative overflow-hidden py-16 md:py-24"
+      >
+        <div className="absolute inset-0 bg-[#0a0a12]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#3ecef7]/5 via-transparent to-[#7deb7d]/5"></div>
+
+        <div className="container relative z-10 px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center justify-center space-y-4 text-center"
+          >
+            <h2
+              className={`${audiowide.className} text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white`}
+            >
+              Simple,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3ecef7] to-[#7deb7d]">
+                flat pricing
+              </span>
+            </h2>
+            <p className="mx-auto max-w-[700px] text-gray-400 md:text-lg">
+              No hourly billing. No surprise invoices. Pick a package, pay half up front,
+              half at launch.
+            </p>
+          </motion.div>
+
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 py-12 md:grid-cols-3">
+            {/* Starter */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="relative rounded-lg border border-[#1a1a2e] bg-[#0f0f1a] p-8 flex flex-col"
+            >
+              <h3 className="text-xl font-bold text-white">Starter Site</h3>
+              <p className="text-gray-400 text-sm mt-1">For solo operators getting online fast.</p>
+              <div className="mt-6">
+                <span className={`${audiowide.className} text-4xl font-bold text-white`}>$1,800</span>
+                <span className="text-gray-400 ml-2">CAD</span>
+              </div>
+              <p className="text-sm text-[#3ecef7] mt-1">Live in 2 weeks</p>
+              <ul className="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                <li>• Up to 5 pages</li>
+                <li>• Mobile-first responsive design</li>
+                <li>• Contact / quote form</li>
+                <li>• Google Maps + reviews embed</li>
+                <li>• Basic on-page SEO</li>
+                <li>• Vercel deployment</li>
+              </ul>
+              <Link href="#contact" className="mt-8">
+                <NeonButton color="cyan" className="w-full">Book a call</NeonButton>
+              </Link>
+            </motion.div>
+
+            {/* Growth — highlighted */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative rounded-lg border border-[#7deb7d]/50 bg-[#0f0f1a] p-8 flex flex-col shadow-[0_0_25px_rgba(125,235,125,0.15)]"
+            >
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#3ecef7] to-[#7deb7d] text-black text-xs font-semibold uppercase px-3 py-1 rounded-full">
+                Most popular
+              </span>
+              <h3 className="text-xl font-bold text-white">Growth Site</h3>
+              <p className="text-gray-400 text-sm mt-1">For businesses ready to grow online.</p>
+              <div className="mt-6">
+                <span className={`${audiowide.className} text-4xl font-bold text-white`}>$3,500</span>
+                <span className="text-gray-400 ml-2">CAD</span>
+              </div>
+              <p className="text-sm text-[#7deb7d] mt-1">Live in 3 weeks</p>
+              <ul className="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                <li>• Up to 10 pages</li>
+                <li>• Everything in Starter</li>
+                <li>• Blog / CMS for easy updates</li>
+                <li>• Booking / Calendly integration</li>
+                <li>• Advanced SEO + analytics</li>
+                <li>• Newsletter capture</li>
+              </ul>
+              <Link href="#contact" className="mt-8">
+                <NeonButton color="green" className="w-full">Book a call</NeonButton>
+              </Link>
+            </motion.div>
+
+            {/* Commerce */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="relative rounded-lg border border-[#1a1a2e] bg-[#0f0f1a] p-8 flex flex-col"
+            >
+              <h3 className="text-xl font-bold text-white">Commerce</h3>
+              <p className="text-gray-400 text-sm mt-1">For selling products or digital goods.</p>
+              <div className="mt-6">
+                <span className={`${audiowide.className} text-4xl font-bold text-white`}>$6,500</span>
+                <span className="text-gray-400 ml-2">CAD</span>
+              </div>
+              <p className="text-sm text-[#3ecef7] mt-1">Live in 4 weeks</p>
+              <ul className="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                <li>• Shopify or headless commerce</li>
+                <li>• Up to 50 products</li>
+                <li>• Stripe / payment integration</li>
+                <li>• Inventory + order flows</li>
+                <li>• Email receipts + abandoned cart</li>
+                <li>• Everything in Growth</li>
+              </ul>
+              <Link href="#contact" className="mt-8">
+                <NeonButton color="cyan" className="w-full">Book a call</NeonButton>
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Care plan */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mx-auto max-w-4xl mt-8 rounded-lg border border-[#1a1a2e] bg-[#0f0f1a] p-6 flex flex-col md:flex-row items-center justify-between gap-4"
+          >
+            <div>
+              <h4 className="text-lg font-bold text-white">Care Plan — $150 CAD/mo</h4>
+              <p className="text-gray-400 text-sm mt-1">
+                Hosting, security patches, and up to 1 hour of small content changes each month.
+                Cancel anytime.
+              </p>
+            </div>
+            <Link href="#contact">
+              <NeonButton color="green" variant="outline">Add to any plan</NeonButton>
+            </Link>
+          </motion.div>
+
+          <p className="text-center text-sm text-gray-500 mt-6 max-w-2xl mx-auto">
+            Need something custom — internal tool, dashboard, or integration? Book a call and we'll
+            scope it together.
+          </p>
         </div>
       </section>
 
@@ -500,33 +598,40 @@ export default function Home() {
               <h2
                 className={`${audiowide.className} text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white`}
               >
-                Contact{" "}
+                Let's{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3ecef7] to-[#7deb7d]">
-                  Us
+                  talk
                 </span>
               </h2>
-
+              <p className="mx-auto max-w-[640px] text-gray-400 md:text-lg pt-2">
+                Free 20-minute scoping call. No pitch — we'll walk through what you need
+                and tell you honestly if we're a fit.
+              </p>
             </div>
           </motion.div>
 
-          <div className="mx-auto flex max-w-4xl justify-center py-12">
-            {/* <motion.div
-              initial={{ opacity: 0, x: -50 }}
+          <div className="mx-auto grid max-w-6xl grid-cols-1 md:grid-cols-2 gap-10 py-12">
+            {/* Left: Contact info + primary booking CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
-              className="rounded-lg bg-[#0f0f1a] p-8 border border-[#1a1a2e] shadow-[0_0_15px_rgba(62,206,247,0.15)]"
+              className="flex flex-col justify-start space-y-8"
             >
-              <CyberCalendar />
-            </motion.div> */}
+              {process.env.NEXT_PUBLIC_CALENDLY_URL ? (
+                <Link
+                  href={process.env.NEXT_PUBLIC_CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <NeonButton color="cyan" className="w-full py-6 text-base">
+                    📅 Book a free 20-min call
+                  </NeonButton>
+                </Link>
+              ) : null}
 
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="flex flex-col justify-center space-y-8"
-            >
               <div className="flex items-start space-x-4">
                 <div className="rounded-full bg-[#7deb7d]/10 p-3 border border-[#7deb7d]/30 shadow-[0_0_10px_rgba(125,235,125,0.3)]">
                   <svg
@@ -566,7 +671,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-xl font-bold text-white">Email</h3>
-                  <p className="text-gray-300">zoftwaredevelopment@yahoo.com</p>
+                  <p className="text-gray-300">hello@zoftwaredevelopment.agency</p>
                 </div>
               </div>
 
@@ -596,31 +701,17 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* <div className="flex items-start space-x-4">
-                <div className="rounded-full bg-[#7deb7d]/10 p-3 border border-[#7deb7d]/30 shadow-[0_0_10px_rgba(125,235,125,0.3)]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-6 w-6 text-[#7deb7d]"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                    <polyline points="12 6 12 12 16 14" />
-                  </svg>
-                </div>
-                <div className="space-y-1">
-                  <h3 className="text-xl font-bold text-white">
-                    Business Hours
-                  </h3>
-                  <p className="text-gray-300">Monday - Sunday: 9am - 6pm</p>
-                </div>
-              </div> */}
+            </motion.div>
+
+            {/* Right: Contact form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="rounded-lg bg-[#0f0f1a] p-6 md:p-8 border border-[#1a1a2e] shadow-[0_0_15px_rgba(62,206,247,0.15)]"
+            >
+              <ContactForm />
             </motion.div>
           </div>
         </div>
