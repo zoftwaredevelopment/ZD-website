@@ -382,7 +382,6 @@ export default function Home() {
             animate={projectsInView ? "visible" : "hidden"}
             className="mx-auto grid max-w-6xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3"
           >
-            {/* Mama-Ella-Eats project card removed — demo site not hosted. Restore from git history if needed. */}
             <motion.div variants={itemVariants}>
               <ProjectCard
                 title="With Love Cleaning"
