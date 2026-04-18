@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   },
 
   // Primary SEO tags
-  title: "Zoftware Development - Custom Software Solutions & Web Development",
-  description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
-  keywords: "custom software development, web development, mobile app development, enterprise software, business automation, React development, Next.js development", // Focused, relevant keywords
+  title: "Zoftware Development — Websites & Online Stores for Ottawa Businesses",
+  description: "Custom websites and Shopify stores for Ottawa service businesses and founders. Launched in 2–4 weeks, from $1,800 CAD. Built on Next.js, React, and TypeScript.",
+  keywords: "Ottawa web development, Ottawa web designer, small business website Ottawa, Shopify developer Canada, Next.js agency, React developer Ottawa, custom website Canada",
 
   // Technical metadata
   generator: "Next.js",
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',                     // Language and region
     url: 'https://zoftwaredevelopment.agency',         // Canonical URL for social sharing
-    title: "Zoftware Development - Custom Software Solutions & Web Development",
-    description: "Transform your business with custom software solutions from Zoftware Development. Expert web development, mobile apps, and enterprise software. Anything is possible with Zoftware.",
+    title: "Zoftware Development — Websites & Online Stores for Ottawa Businesses",
+    description: "Custom websites and Shopify stores for Ottawa service businesses and founders. Launched in 2–4 weeks, from $1,800 CAD.",
     siteName: "Zoftware Development",    // Site name for social platforms
     images: [
       {
@@ -69,8 +69,8 @@ export const metadata: Metadata = {
   // X (formerly Twitter) Card metadata for better X sharing
   twitter: {
     card: 'summary_large_image',         // Large image card for better visibility
-    title: "Zoftware Development - Custom Software Solutions",
-    description: "Transform your business with custom software solutions. Expert web development, mobile apps, and enterprise software.",
+    title: "Zoftware Development — Websites for Ottawa Businesses",
+    description: "Custom websites and Shopify stores, launched in 2–4 weeks from $1,800 CAD.",
     images: ['/images/just-logo.png'],   // X card image
     creator: '@ZoftwareD',             // X handle
   },

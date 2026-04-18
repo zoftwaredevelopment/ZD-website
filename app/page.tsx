@@ -671,7 +671,7 @@ export default function Home() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-xl font-bold text-white">Email</h3>
-                  <p className="text-gray-300">hello@zoftwaredevelopment.agency</p>
+                  <p className="text-gray-300">zoftwaredevelopment@yahoo.com</p>
                 </div>
               </div>
 

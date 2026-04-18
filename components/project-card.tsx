@@ -14,6 +14,8 @@ interface ProjectCardProps {
   imageUrl: string;
   // Optional call-to-action URL for the project card; defaults to '#' when not provided
   ctaUrl?: string;
+  // Optional outcome/result shown as a highlighted line (e.g. "Live in 10 days. First bookings week one.")
+  outcome?: string;
 }
 
 export function ProjectCard({
@@ -22,6 +24,7 @@ export function ProjectCard({
   tags,
   imageUrl,
   ctaUrl,
+  outcome,
 }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   // Ref and state to manage visible tags and hidden count when tags wrap
@@ -109,6 +112,11 @@ export function ProjectCard({
             </div>
 
             <p className="text-gray-400">{description}</p>
+            {outcome && (
+              <p className="text-sm font-medium text-[#7deb7d] border-l-2 border-[#7deb7d]/60 pl-3 py-1">
+                {outcome}
+              </p>
+            )}
             <div className="pt-2">
               <Link
                 href={ctaUrl || "#"}

@@ -38,16 +38,34 @@ export function ContactForm() {
       });
       return;
     }
-    setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
+    if (!endpoint) {
+      toast({
+        title: "Form not configured",
+        description:
+          "Email zoftwaredevelopment@yahoo.com directly while we finish setup.",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formState),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
       toast({
         title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        description: "We'll get back to you within 1 business day.",
       });
-      // Reset form
       setFormState({
         name: "",
         email: "",
@@ -55,7 +73,15 @@ export function ContactForm() {
         subject: "",
         message: "",
       });
-    }, 1500);
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description:
+          "Please try again, or WhatsApp us at +234 706 890 3471.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
