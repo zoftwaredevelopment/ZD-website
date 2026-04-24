@@ -9,6 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { motion } from "framer-motion";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdayyqpo";
+
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formState, setFormState] = useState({
@@ -30,7 +32,6 @@ export function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Ensure at least one contact method is provided
     if (!formState.email && !formState.phone) {
       toast({
         title: "Contact info required",
@@ -39,19 +40,9 @@ export function ContactForm() {
       return;
     }
 
-    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-    if (!endpoint) {
-      toast({
-        title: "Form not configured",
-        description:
-          "Email zoftwaredevelopment@yahoo.com directly while we finish setup.",
-      });
-      return;
-    }
-
     setIsSubmitting(true);
     try {
-      const res = await fetch(endpoint, {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
