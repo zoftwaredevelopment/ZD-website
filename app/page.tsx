@@ -129,7 +129,7 @@ export default function Home() {
                 className={`${audiowide.className} text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl`}
               >
                 <TypingEffect
-                  text="Websites that win you customers"
+                  text="Anything is possible with zoftware"
                   speed={80}
                 />
               </h1>
