@@ -386,15 +386,6 @@ export default function Home() {
               <ProjectCard
                 title="With Love Cleaning"
                 description="Professional cleaning services website for a mompreneur in Ottawa. Residential, move-in/move-out, and post-construction cleaning, with an integrated quote form."
-                outcome="Launched a polished, mobile-first presence so the owner could compete with established Ottawa cleaners."
-                tags={[
-                  "Next.js 15 (App Router)",
-                  "React 18",
-                  "TypeScript",
-                  "Node.js v18+",
-                  "Formspree",
-                  "Vercel",
-                ]}
                 imageUrl="/images/hero-logo.jpg"
                 ctaUrl="https://www.withlovecleaning.ca/"
               />
@@ -404,27 +395,16 @@ export default function Home() {
               <ProjectCard
                 title="MASA Reset System"
                 description="Web app for a specialized fitness platform for Arabs integrating tailored workout plans, customized diets, and community accountability via private WhatsApp groups and 1-on-1 support."
-                outcome="Our first fully-paid retained client — platform now powers a paying subscriber base."
-                tags={[
-                  "HTML5/CSS3",
-
-                  "Vanilla JS",
-                  "Stripe",
-                  "@vercel/analytics",
-                  "Node.js",
-                  "Vercel",
-
-                  "Typeform",
-                  "Vimeo Player API",
-                  "Font Awesome",
-                  "Flubber",
-                  "Google Fonts",
-
-                  "Facebook Pixel",
-                  "Hotjar",
-                ]}
                 imageUrl="/images/masa-logo.png"
                 ctaUrl="https://www.masa.fitness/"
+              />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <ProjectCard
+                title="Benyville Homes"
+                description="Real estate marketing site for Benyville Homes — property listings, brand presence, and lead capture for their 'Real Estate redefined' offering."
+                imageUrl="/images/benyville-logo.jpg"
+                ctaUrl="https://www.benyvillehomes.com"
               />
             </motion.div>
           </motion.div>
